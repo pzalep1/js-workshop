@@ -8,19 +8,24 @@
     <button class="tigers">Tigers</button>
 
     <script>
+        // documentation for addEventListener https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
         document.addEventListener('click', function(event){
+            // documentation for createElement https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement 
             var node = document.createElement('p');
-
+            // documentation for target.className https://developer.mozilla.org/en-US/docs/Web/API/Element/className
             if(event.target.className === 'towson') {
+                // documentation for createTextNode https://developer.mozilla.org/en-US/docs/Web/API/Document/createTextNode
                 var text = document.createTextNode('Towson');
-                
+                // documentation for https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild
                 node.appendChild(text);
-
+                // documentation for classList.add https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
                 node.classList.add('tu');
-
-                var element = document.getElementByClassName('bengal');
-                if (element.parentNode != null) {
-                    element.remove();
+                // documentation for getElementsByClassName https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByClassName
+                var element = document.getElementsByClassName('bengal');
+                // this is where I was messing up today. Because element was an array you need to iterate through it and delete the nodes. I was trying to delete the array
+                while(element.length > 0) {
+                    // documentation for removeChild https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild
+                    element[0].parentNode.removeChild(element[0]);
                 }
             } else if (event.target.className === 'tigers') {
                 var text = document.createTextNode('Tigers');
@@ -28,9 +33,10 @@
                 node.appendChild(text);
                 node.classList.add('bengal');
 
-                var element = document.getElementByClassName('tu');
-                if (element.parentNode != null){
-                    element.remove();
+                var elements = document.getElementsByClassName('tu');
+                // this is where I was messing up today. Because element was an array you need to iterate through it and delete the nodes. I was trying to delete the array
+                while(elements.length > 0) {
+                    elements[0].parentNode.removeChild(elements[0]);
                 }
             }
         
