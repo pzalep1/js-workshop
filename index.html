@@ -1,0 +1,42 @@
+<!DOCTYPE>
+<html>
+<head>
+    <title>JS Workshop</title>
+</head>
+<body>
+    <button class="towson">Towson</button>
+    <button class="tigers">Tigers</button>
+
+    <script>
+        document.addEventListener('click', function(event){
+            var node = document.createElement('p');
+
+            if(event.target.className === 'towson') {
+                var text = document.createTextNode('Towson');
+                
+                node.appendChild(text);
+
+                node.classList.add('tu');
+
+                var element = document.getElementByClassName('bengal');
+                if (element.parentNode != null) {
+                    element.remove();
+                }
+            } else if (event.target.className === 'tigers') {
+                var text = document.createTextNode('Tigers');
+        
+                node.appendChild(text);
+                node.classList.add('bengal');
+
+                var element = document.getElementByClassName('tu');
+                if (element.parentNode != null){
+                    element.remove();
+                }
+            }
+        
+
+            document.body.appendChild(node);
+        }, false);
+    </script>
+</body>
+</html>
